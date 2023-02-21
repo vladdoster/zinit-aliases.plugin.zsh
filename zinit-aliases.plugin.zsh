@@ -5,10 +5,11 @@ alias zcd='zinit cd'
 
 # zinit delete
 alias zdy='zinit delete --yes'
+alias zda='zinit delete --all'
 alias zr='zinit delete'
 
 # zinit gh-r
-alias zghr='zinit from"gh-r" id-as lbin"!" light-mode for'
+alias zghr='zinit from"gh-r" id-as lbin"!" light-mode null for'
 
 # zinit info
 alias zin='zinit status'
