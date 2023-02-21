@@ -6,7 +6,7 @@ alias zcd='zinit cd'
 # zinit delete
 alias zda='zinit delete --all'
 alias zdy='zinit delete --yes'
-alias zr='zinit delete'
+alias zd='zinit delete'
 
 # zinit gh-r
 alias zghr='zinit from"gh-r" id-as lbin"!" light-mode null for'
