@@ -24,9 +24,15 @@ alias zsu='zinit self-update'
 alias zt='zinit times'
 
 # cd to various zinit directory
-alias zbd='cd $ZINIT[BIN_DIR] || return 1'
-alias zhd='cd $ZINIT[HOME_DIR] || return 1'
-alias zpd='cd $ZINIT[HOME_DIR]/plugins || return 1'
+local -A pairs=(
+  zbd "$ZINIT[BIN_DIR]"
+  zhd "$ZINIT[HOME_DIR]"
+  zpb "${ZPFX}/bin"
+  zpd "${ZINIT[HOME_DIR]}/plugins"
+)
+for k v in ${(kv)pairs[@]}; do
+    builtin alias -- "$k"="{ cd ${v} && ls } || return 1" || true
+done
 
 # zinit update
 alias zua='zinit update --all'
