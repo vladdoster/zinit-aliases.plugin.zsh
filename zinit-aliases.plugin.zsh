@@ -23,19 +23,23 @@ alias zsu='zinit self-update'
 # zinit load times
 alias zt='zinit times'
 
+alias zrld='builtin exec zsh -i'
+
 # cd to various zinit directory
 local -A pairs=(
   zbd "$ZINIT[BIN_DIR]"
+  zgd "$ZINIT[BIN_DIR]"
   zhd "$ZINIT[HOME_DIR]"
   zpb "${ZPFX}/bin"
   zpd "${ZINIT[HOME_DIR]}/plugins"
 )
+
 for k v in ${(kv)pairs[@]}; do
-    builtin alias -- "$k"="{ cd ${v} && ls } || return 1" || true
+    builtin alias -- "$k"="{ builtin cd ${v} && command -p ls -a --color } || return 1" || true
 done
 
 # zinit update
 alias zua='zinit update --all'
 alias zup='zinit update'
-alias zur='zinit update --reset'
 alias zuu='zinit update --urge'
+alias zur='zinit update --reset'
