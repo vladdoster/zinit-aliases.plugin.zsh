@@ -34,6 +34,7 @@ local -A pairs=(
   zpd "${ZINIT[HOME_DIR]}/plugins"
 )
 
+local k v
 for k v in ${(kv)pairs[@]}; do
     builtin alias -- "$k"="{ builtin cd ${v} && command -p ls -a --color } || return 1" || true
 done
