@@ -22,8 +22,8 @@ alias zsu='zinit self-update'
 
 # zinit load times
 alias zt='zinit times'
-
 alias zrld='builtin exec zsh -i'
+alias zc='zinit compile --all'
 
 # cd to various zinit directory
 local -A pairs=(
