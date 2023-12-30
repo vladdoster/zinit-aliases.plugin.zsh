@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+setopt localoptions no_aliases
+
 # zinit cd
 alias zcd='zinit cd'
 
@@ -22,7 +24,7 @@ alias zsu='zinit self-update'
 
 # zinit load times
 alias zt='zinit times'
-alias zrld='builtin exec zsh -i'
+alias zrld='builtin exec -c zsh'
 alias zc='zinit compile --all'
 
 # cd to various zinit directory
@@ -36,7 +38,9 @@ local -A pairs=(
 
 local k v
 for k v in ${(kv)pairs[@]}; do
-    builtin alias -- "$k"="{ builtin cd ${v} && command -p ls -a --color } || return 1" || true
+  {
+    builtin alias -- "$k"="{ builtin cd ${v} && command -p ls -a --color } || return 1" 
+  } || true
 done
 
 # zinit update
